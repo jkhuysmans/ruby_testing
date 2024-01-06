@@ -109,37 +109,37 @@ describe BinarySearch do
     let(:range_number) { instance_double(RandomNumber, value: 8) }
 
     context 'when the guess is less than the answer' do
-      subject(:low_guess_game) { described_class.new(0, 9, range_number, 4) }
+      subject(:game) { described_class.new(0, 9, range_number, 4) }
 
       before do
-        low_guess_game.update_range
+        game.update_range
       end
 
       it 'updates min' do
-        minimum = low_guess_game.min
+        minimum = game.min
         expect(minimum).to eq(5)
       end
 
       it 'does not update max' do
-        maximum = low_guess_game.max
+        maximum = game.max
         expect(maximum).to eq(9)
       end
     end
 
     context 'when the guess is more than the answer' do
-      subject(:high_guess_game) { described_class.new(0, 9, range_number, 9) }
+      subject(:game) { described_class.new(0, 9, range_number, 9) }
 
       before do
-        high_guess_game.update_range
+        game.update_range
       end
 
       it 'does not update min' do
-        minimum = high_guess_game.min
+        minimum = game.min
         expect(minimum).to eq(0)
       end
 
       it 'updates max' do
-        maximum = high_guess_game.max
+        maximum = game.max
         expect(maximum).to eq(8)
       end
     end
